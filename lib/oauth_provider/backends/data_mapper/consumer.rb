@@ -9,8 +9,8 @@ module OAuthProvider
         property :shared_key, String, :unique => true, :required => false
         property :secret_key, String, :unique => true, :required => false
 
-        has n, :user_requests, :class_name => '::OAuthProvider::Backends::DataMapper::UserRequest'
-        has n, :user_accesses, :class_name => '::OAuthProvider::Backends::DataMapper::UserAccess'
+        has n, :user_requests, :model => '::OAuthProvider::Backends::DataMapper::UserRequest'
+        has n, :user_accesses, :model => '::OAuthProvider::Backends::DataMapper::UserAccess'
 
         def token
           OAuthProvider::Token.new(shared_key, secret_key)
